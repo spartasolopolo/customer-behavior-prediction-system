@@ -1,0 +1,21 @@
+﻿Data,Variable,Description
+E Comm,CustomerID,Unique customer ID
+E Comm,Churn,"Churn Flag (0=customer retained, 1=customer churned)"
+E Comm,Tenure,Tenure of customer in organization
+E Comm,PreferredLoginDevice,Preferred login device of customer
+E Comm,CityTier,City tier
+E Comm,WarehouseToHome,Distance in between warehouse to home of customer
+E Comm,PreferredPaymentMode,Preferred payment method of customer
+E Comm,Gender,Gender of customer
+E Comm,HourSpendOnApp,Number of hours spent on mobile application or website
+E Comm,NumberOfDeviceRegistered,Total number of devices registered on by particular customer
+E Comm,PreferedOrderCat,Preferred order category of customer in last month
+E Comm,SatisfactionScore,Satisfactory score of customer on service
+E Comm,MaritalStatus,Marital status of customer
+E Comm,NumberOfAddress,Total number of delivery addresses added on particular customer
+E Comm,Complain,Any complaints raised in last month
+E Comm,OrderAmountHikeFromlastYear,Percentage increase in order from last year
+E Comm,CouponUsed,Total number of coupons used in last month
+E Comm,OrderCount,Total number of orders placed in last month
+E Comm,DaySinceLastOrder,Days since last order by customer
+E Comm,CashbackAmount,Average cashback in the last month
