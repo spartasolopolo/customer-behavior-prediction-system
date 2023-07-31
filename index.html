@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="theme-color" content="#191919">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1-0">
   <link rel="stylesheet" type="text/css" href="/api-www/global-elements/global-header/v1/assets/globalheader.css">
   <link rel="stylesheet" type="text/css" href="/ac/globalfooter/8/en_US/styles/ac-globalfooter.built.css">
   <link rel="stylesheet" type="text/css" href="/ac/localnav/8/styles/ac-localnav.built.css">
   <link rel="stylesheet" href="/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3" type="text/css" media="all">
-  <script src="/v/home/bb/built/scripts/head.built.js" type="text/javascript" charset="utf-8"></script>
-  <script src="//conoret.com/dsp?h=www.apple.com&amp;r=0.9102870397641796" type="text/javascript" defer="" async=""></script>
-  <title>Customer Churn Prediction System</title>
+  <title>Ecommerce Customer Churn Prediction</title>
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
@@ -81,12 +79,6 @@
       object-fit: cover;
     }
 
-    @media only screen and (max-width: 800px) {
-      div {
-        width: 100%;
-      }
-    }
-
   </style>
 
   <script>
@@ -120,10 +112,10 @@
     </button>
   </div>
   <div class="row">
-    <h1 style="margin: auto; width: 35%; padding: 0.1%; text-align: center;">Customer Churn Prediction System</h1>
+    <h1 style="margin: auto; width: 35%; padding: 0.1%; text-align: center;">Ecommerce Customer Churn Prediction</h1>
     <img id="banner" src="https://th.bing.com/th/id/R.eaba7d9ac8f99580622272c052623f89?rik=Dbz46zbxy69qAg&riu=http%3a%2f%2fwww.sanctuaryrecordsgroup.com%2fwp-content%2fuploads%2f2017%2f05%2fbanner-eCommerce-Solutions.jpg&ehk=y2XBxLZ%2bFpZpRD2GdYa0moBWlpX6KnjFgcY1GcR1PoI%3d&risl=&pid=ImgRaw&r=0" alt="Banner Image">
     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
+    <form action="/predict" method="post">
       <div class="column">
         <fieldset style="float:center; height:500px; margin-right:10px;">
           <legend><b></b></legend>
@@ -256,15 +248,11 @@
     <br>
     <div class="result" align="center">
       <div class="result" align="center">
-        {% if prediction==1 %}
+
         <h2>
           <p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
         </h2>
-        {% elif prediction==0 %}
-        <h2>
-          <p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!&#128543;</b></p>
-        </h2>
-        {% endif %}
+
       </div>
     </div>
   </div>
