@@ -4,17 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="theme-color" content="#191919">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ecommerce Customer Churn Prediction</title>
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300" rel="stylesheet">
-  <style>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style id="theme-style">
     body {
-      margin: 0;
-      padding: 0;
+      margin-top: 0px;
       background-color: white;
       color: black;
-      font-family: 'Roboto', 'Helvetica', sans-serif;
+      font-family: roboto, helvetica, sans-serif;
     }
 
     body.dark-mode {
@@ -22,92 +25,15 @@
       color: #ff9933;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .column {
-      flex: 1;
-      padding: 10px;
-    }
-
-    h1 {
-      margin: 0 auto;
-      text-align: center;
+    .result {
+      margin: auto;
+      max-width: 75%;
     }
 
     #banner {
       width: 100%;
-      height: auto;
-    }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    fieldset {
-      width: 100%;
-      max-width: 400px;
-      border: none;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: 'Arimo', sans-serif;
-    }
-
-    .button {
-      text-align: center;
-    }
-
-    .button-submit {
-      background-color: #ff9933;
-      padding: 15px 30px;
-      border: none;
-      color: black;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .button-submit:hover {
-      background-color: #008cba;
-      color: white;
-    }
-
-    .button-submit:active {
-      background-color: #4caf55;
-      color: white;
-    }
-
-    .result {
-      text-align: center;
-    }
-
-    .result p {
-      padding: 10px;
-      color: red;
-      font-size: 20px;
+      max-height: 360px;
+      object-fit: cover;
     }
   </style>
 
@@ -135,22 +61,38 @@
 </head>
 
 <body>
+
   <div class="container">
-    <div class="button">
-      <button type="button" class="button-submit" onclick="toggleTheme()">
-        <b>Dark Theme</b>
-      </button>
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <button type="button" class="btn btn-primary" onclick="toggleTheme()">
+          <b>Dark Theme</b>
+        </button>
+      </div>
     </div>
 
-    <h1>Ecommerce Customer Churn Prediction</h1>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <h1 class="text-center">Ecommerce Customer Churn Prediction</h1>
+      </div>
+    </div>
 
-    <div class="row">
-      <div class="column">
-        <form action="/predict" method="post">
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <img id="banner"
+          src="https://th.bing.com/th/id/R.eaba7d9ac8f99580622272c052623f89?rik=Dbz46zbxy69qAg&riu=http%3a%2f%2fwww.sanctuaryrecordsgroup.com%2fwp-content%2fuploads%2f2017%2f05%2fbanner-eCommerce-Solutions.jpg&ehk=y2XBxLZ%2bFpZpRD2GdYa0moBWlpX6KnjFgcY1GcR1PoI%3d&risl=&pid=ImgRaw&r=0"
+          alt="Banner Image">
+      </div>
+    </div>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="/predict" method="post" class="mt-3">
+      <div class="row">
+        <div class="col-md-6">
           <fieldset>
-            <legend><b>Customer Information</b></legend>
-            <label for="tenure">Tenure:</label>
-            <input type="number" name="tenure" placeholder="Tenure with the organization" required="required" />
+            <legend><b></b></legend>
+            <p><b>Tenure :</b><br>
+              <input type="number" name="tenure" placeholder="tenure with the organization" required="required" /></p>
 
             <label for="citytier">City Tier:</label>
             <select name="citytier" id="citytier" required>
@@ -207,15 +149,15 @@
 
 
           </fieldset>
-      </div>
+        </div>
 
-      <div class="column">
-        <fieldset>
-          <legend><b>Order Information</b></legend>
-          <label for="lastorder">Number of days since last order placed:</label>
-          <input type="number" name="lastorder" placeholder="Last order" required="required" />
+        <div class="col-md-6">
+          <fieldset>
+            <legend><b></b></legend>
+            <p><b>Number of days since last order placed :</b><br>
+              <input type="number" name="lastorder" placeholder="last order" required="required" /></p>
 
-          <label for="logindevice">Preferred login device:</label>
+           <label for="logindevice">Preferred login device:</label>
           <select name="logindevice" id="logindevice" required>
             <option value="Mobile">Mobile Phone</option>
             <option value="Computer">Computer</option>
@@ -267,21 +209,30 @@
             <input type="number" name="orderhike" placeholder="order hike" required="required" /></p>
 
 
-        </fieldset>
+          </fieldset>
+        </div>
       </div>
 
-      <div class="button">
-        <button type="submit" class="button-submit"><b>SUBMIT</b></button>
+      <div class="row mt-3">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary"><b>SUBMIT</b></button>
+        </div>
       </div>
-      </form>
+    </form>
+
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="result" align="center">
+          <h2>
+            <p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
+          </h2>
+        </div>
+      </div>
     </div>
 
-    <div class="result">
-      <h2>
-        <p><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
-      </h2>
-    </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
