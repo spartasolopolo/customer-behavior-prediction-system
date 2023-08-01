@@ -4,26 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="theme-color" content="#191919">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/api-www/global-elements/global-header/v1/assets/globalheader.css">
-  <link rel="stylesheet" type="text/css" href="/ac/globalfooter/8/en_US/styles/ac-globalfooter.built.css">
-  <link rel="stylesheet" type="text/css" href="/ac/localnav/8/styles/ac-localnav.built.css">
-  <link rel="stylesheet" href="/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3" type="text/css" media="all">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ecommerce Customer Churn Prediction</title>
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  <style id="theme-style">
-
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300" rel="stylesheet">
+  <style>
     body {
-      margin-top: 0px;
+      margin: 0;
+      padding: 0;
       background-color: white;
       color: black;
-      width: 100%;
-      transform: scale(90%);
-      font-family: roboto, helvetica, sans-serif;
+      font-family: 'Roboto', 'Helvetica', sans-serif;
     }
 
     body.dark-mode {
@@ -31,39 +22,72 @@
       color: #ff9933;
     }
 
-    @media screen and (max-width: 600px) {
-      body {
-        transform: scale(100%);
-      }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-      .row {
-        display: block;
-      }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
 
-      .column {
-        width: 100%;
-      }
+    .column {
+      flex: 1;
+      padding: 10px;
+    }
 
-      .result {
-        width: 90%;
-        margin: 0 auto;
-      }
+    h1 {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #banner {
+      width: 100%;
+      height: auto;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    fieldset {
+      width: 100%;
+      max-width: 400px;
+      border: none;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Arimo', sans-serif;
     }
 
     .button {
       text-align: center;
     }
 
-    .button1 {
-      text-align: right;
-    }
-
     .button-submit {
       background-color: #ff9933;
-      padding: 15px 3px;
-      margin-top: 20px;
+      padding: 15px 30px;
       border: none;
       color: black;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     .button-submit:hover {
@@ -76,12 +100,15 @@
       color: white;
     }
 
-    #banner {
-      height: 360px;
-      width: 100%;
-      object-fit: cover;
+    .result {
+      text-align: center;
     }
 
+    .result p {
+      padding: 10px;
+      color: red;
+      font-size: 20px;
+    }
   </style>
 
   <script>
@@ -108,33 +135,31 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="button">
+      <button type="button" class="button-submit" onclick="toggleTheme()">
+        <b>Dark Theme</b>
+      </button>
+    </div>
 
-  <div class="button1">
-    <button type="button" class="button-submit" onclick="toggleTheme()">
-      <b>Dark Theme</b>
-    </button>
-  </div>
-  <div class="row">
-    <h1 style="margin: auto; width: 35%; padding: 0.1%; text-align: center;">Ecommerce Customer Churn Prediction</h1>
-    <img id="banner" src="https://th.bing.com/th/id/R.eaba7d9ac8f99580622272c052623f89?rik=Dbz46zbxy69qAg&riu=http%3a%2f%2fwww.sanctuaryrecordsgroup.com%2fwp-content%2fuploads%2f2017%2f05%2fbanner-eCommerce-Solutions.jpg&ehk=y2XBxLZ%2bFpZpRD2GdYa0moBWlpX6KnjFgcY1GcR1PoI%3d&risl=&pid=ImgRaw&r=0" alt="Banner Image">
-    <!-- Main Input For Receiving Query to our ML -->
-    <form action="/predict" method="post">
+    <h1>Ecommerce Customer Churn Prediction</h1>
+
+    <div class="row">
       <div class="column">
-        <fieldset style="float:center; height:500px; margin-right:10px;">
-          <legend><b></b></legend>
-          <p><b>Tenure :</b><br>
-            <input type="number" name="tenure" placeholder="tenure with the organization" required="required" /></p>
+        <form action="/predict" method="post">
+          <fieldset>
+            <legend><b>Customer Information</b></legend>
+            <label for="tenure">Tenure:</label>
+            <input type="number" name="tenure" placeholder="Tenure with the organization" required="required" />
 
-
-          <p><b>City Tier:</b><br>
+            <label for="citytier">City Tier:</label>
             <select name="citytier" id="citytier" required>
               <option value="1">Tier 1</option>
               <option value="2">Tier 2</option>
               <option value="3">Tier 3</option>
-            </select></p>
+            </select>
 
-
-          <p><b>Distance to the warehouse from the residence :</b><br>
+            <p><b>Distance to the warehouse from the residence :</b><br>
             <input type="number" name="warehousetohome" placeholder="distance in km" required="required" /></p>
 
 
@@ -180,22 +205,21 @@
           <p><b>Cashback Amount :</b><br>
             <input type="number" name="cashbackamount" placeholder="Cashback Amount" required="required" /></p>
 
-        </fieldset>
+
+          </fieldset>
       </div>
 
       <div class="column">
-        <fieldset style="height:500px; margin-right:10px;">
-          <legend><b></b></legend>
-          <p><b>Number of days since last order placedv :</b><br>
-            <input type="number" name="lastorder" placeholder="last order" required="required" /></p>
+        <fieldset>
+          <legend><b>Order Information</b></legend>
+          <label for="lastorder">Number of days since last order placed:</label>
+          <input type="number" name="lastorder" placeholder="Last order" required="required" />
 
-
-          <p><b>Preferred login device:</b><br>
-            <select name="logindevice" id="logindevice" required>
-              <option value="Mobile">Mobile Phone</option>
-              <option value="Computer">Computer</option>
-            </select></p>
-
+          <label for="logindevice">Preferred login device:</label>
+          <select name="logindevice" id="logindevice" required>
+            <option value="Mobile">Mobile Phone</option>
+            <option value="Computer">Computer</option>
+          </select>
 
           <p><b>Number of devices registered with the app :</b><br>
             <input type="number" name="numdevices" placeholder="registered devices" required="required" /></p>
@@ -242,26 +266,22 @@
           <p><b>Percentage increases in order from last year :</b><br>
             <input type="number" name="orderhike" placeholder="order hike" required="required" /></p>
 
+
         </fieldset>
       </div>
-      <div class="button" >
-			<button type="submit" class="button-submit" style="cursor:pointer;" hover="background-color:blue;"><b>SUBMIT</b></button>
-		</div>
-    </form>
-    <br>
-    <div class="result" align="center">
-      <div class="result" align="center">
 
-        <h2>
-          <p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
-        </h2>
-
+      <div class="button">
+        <button type="submit" class="button-submit"><b>SUBMIT</b></button>
       </div>
+      </form>
+    </div>
+
+    <div class="result">
+      <h2>
+        <p><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
+      </h2>
     </div>
   </div>
-
-  </div>
-
 </body>
 
 </html>
