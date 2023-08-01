@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="theme-color" content="#191919">
-  <meta name="viewport" content="width=device-width, initial-scale=1-0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/api-www/global-elements/global-header/v1/assets/globalheader.css">
   <link rel="stylesheet" type="text/css" href="/ac/globalfooter/8/en_US/styles/ac-globalfooter.built.css">
   <link rel="stylesheet" type="text/css" href="/ac/localnav/8/styles/ac-localnav.built.css">
@@ -31,20 +31,23 @@
       color: #ff9933;
     }
 
-    .row {
-      margin-top: 0px;
-      padding: 0px;
-      margin-bottom: 20px;
-    }
+    @media screen and (max-width: 600px) {
+      body {
+        transform: scale(100%);
+      }
 
-    .result {
-      margin: auto;
-      width: 75%;
-    }
+      .row {
+        display: block;
+      }
 
-    .column {
-      float: left;
-      width: 50%;
+      .column {
+        width: 100%;
+      }
+
+      .result {
+        width: 90%;
+        margin: 0 auto;
+      }
     }
 
     .button {
