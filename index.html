@@ -134,7 +134,7 @@
   </div>
   <div class="row">
     <h1 style="margin: auto; width: 35%; padding: 0.1%; text-align: center;">E-commerce Customer Churn Prediction System</h1>
-    <img id="banner" src="C:\Users\Administrator\Documents\E-commerce-Customer-Churn-Prediction-System\ecom\static\images\banner2.jpg" class="img-fluid" alt="Banner Image">
+    <img id="banner" src="\ecom\static\images\banner2.jpg" class="img-fluid" alt="Banner Image">
     <br><hr>
 
     <!-- Main Input For Receiving Query to our ML -->
@@ -270,13 +270,16 @@
 		</div>
     </form>
     <br>
+
     <div class="result" align="center">
-      <div class="result" align="center">
-        <h2>
-          <p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p>
-        </h2>
-      </div>
-    </div>
+		<div class="result" align="center">
+		{% if prediction==1 %}
+			<h2><p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p></h2>
+		{% elif prediction==0 %}
+			<h2><p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!</b></p></h2>
+		{% endif %}
+        </div>
+	</div>
   </div>
 
 </body>
