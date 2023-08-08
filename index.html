@@ -205,6 +205,11 @@ i {
   display:block;
 }
 
+/* Add styles for dark theme */
+    body.dark-mode {
+      background-image: url(https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) !important;
+}
+
   </style>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -212,6 +217,14 @@ i {
 </head>
 
 <body>
+
+<!-- Add a toggle button for light/dark theme -->
+<div class="toggle-container">
+  <input type="checkbox" id="theme-toggle">
+  <label for="theme-toggle" class="toggle">
+    <span class="toggle-inner"></span>
+  </label>
+</div>
 
 <!-- Navbar Starts -->
     <section id="nav-bar">
@@ -241,7 +254,7 @@ i {
     <!-- Navbar Ends -->
 
     <!-- Main Input For Receiving Query to our ML -->
-<form action="/predict" method="post">
+<form action="{{ url_for('predict')}}" method="post">
     <h1>Enter the Information Below and find if a Customer will Churn out or not</h1>
 
   <div class="contentform">
@@ -455,6 +468,17 @@ i {
                 <!-- Grid row-->
             </div>
         </div>
+
+        <script>
+  // JavaScript to handle theme toggling
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  themeToggle.addEventListener('change', function () {
+    body.classList.toggle('dark-mode', this.checked);
+  });
+</script>
+
 </body>
 
 </html>
