@@ -8,299 +8,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
-  <script>
-    // Function to toggle between light and dark themes
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-    }
-
-    // Function to load the selected theme from user preference
-    function loadThemePreference() {
-      const darkThemeSelected =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (darkThemeSelected) {
-        document.body.classList.add('dark-mode');
-      }
-    }
-
-    // Load the selected theme when the page is ready
-    document.addEventListener('DOMContentLoaded', loadThemePreference);
-  </script>
-</head>
-
-<body>
-
-<!-- Navbar Starts -->
-    <section id="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand font-weight-bold" href="#" style="color: yellow;">ECOMMERCE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-             <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">Dashboard</a>
-             </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-             </li>
-        </ul>
-    </div>
-    </nav>
-    </section>
-    <!-- Navbar Ends -->
-
-  <div class="button1">
-    <button type="button" class="button-submit" onclick="toggleTheme()">
-      <b>Dark Theme</b>
-    </button>
-  </div>
-
-    <img id="banner" src="C:\Users\Administrator\Documents\E-commerce-Customer-Churn-Prediction-System\ecom\static\images\banner2.jpg" class="img-fluid" alt="Banner Image">
-    <br><hr>
-
-    <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
-    <h1>Enter the Information Below and find if a Customer will Churn out or not</h1>
-
-  <div class="contentform">
-      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
-
-
-      <div class="leftcontact">
-          <div class="form-group">
-        <p>Tenure: <span>*</span></p><br>
-        <span class="icon-case"></span>
-          <input type="number" name="tenure" placeholder="tenure" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Distance to the warehouse from the residence: <span>*</span></p><br>
-        <span class="icon-case"></span>
-        <input type="number" name="warehousetohome" placeholder="distance in km" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Any complaints in the last month: <span>*</span></p><br>
-        <span class="icon-case"></span>
-        <input type="radio" id="yes" name="complain" value="1" required="required" />
-          <div class="validation"></div>
-        <label for="Yes">Yes</label>
-        <input type="radio" id="no" name="complain" value="0" required="required" />
-        <div class="validation"></div>
-        <label for="No">No</label>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Gender of the customer: <span>*</span></p><br>
-        <span class="icon-case"></span>
-        <input type="radio" id="male" name="gender" value="Male" required="required" />
-          <div class="validation"></div>
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="Female" required="required" />
-          <div class="validation"></div>
-        <label for="female">Female</label>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Number of coupons used in the last month: <span>*</span></p><br>
-        <span class="icon-case"></span>
-        <input type="number" name="couponused" placeholder="coupons used" required="required" />
-          <div class="validatiom"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Number of orders made in the last month: <span>*</span></p><br>
-        <span class="icon-case"></span>
-        <input type="number" name="ordercount" placeholder="orders made" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Cashback Amount: <span>*</span></p><br>
-          <span class="icon-case"></span>
-        <input type="number" name="cashbackamount" placeholder="cashback amount" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Number of days since last order placed: <span>*</span></p><br>
-          <span class="icon-case"></span>
-        <input type="number" name="lastorder" placeholder="last order" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Number of devices registered with the app: <span>*</span></p><br>
-          <span class="icon-case"></span>
-        <input type="number" name="numdevices" placeholder="registered devices" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Approx. number of hours customer spends on app: <span>*</span></p><br>
-          <span class="icon-case"></span>
-        <input type="number" name="hourspend" placeholder="hours spent" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Number of addresses registered with the app: <span>*</span></p><br>
-          <span class="icon-case"></span>
-        <input type="number" name="numaddress" placeholder="registered address" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-      <div class="form-group">
-        <p>Percentage increases in order from last year: <span>*</span></p><br>
-        <input type="number" name="orderhike" placeholder="order hike" required="required" />
-          <div class="validation"></div>
-      </div>
-      <br>
-
-  <div class="rightcontact">
-      <div class="form-group">
-        <p>City Tier:<span>*</span><br>
-        <select name="citytier" id="citytier" required>
-            <option value="1">Tier 1</option>
-            <option value="2">Tier 2</option>
-            <option value="3">Tier 3</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-      <br>
-      <div class="form-group">
-        <p>Marital Status:<span>*</span><br>
-        <select name="maritalstatus" id="maritalstatus" required>
-            <option value="Single">Single</option>
-            <option value="Married">Married</option>
-            <option value="Divorced">Divorced</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-
-
-      <div class="form-group">
-        <p>Preferred login device:<span>*</span><br>
-        <select name="logindevice" id="logindevice" required>
-            <option value="Mobile">Mobile Phone</option>
-            <option value="Computer">Computer</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-
-      <div class="form-group">
-        <p>Preferred Payment Mode:<span>*</span><br>
-        <select name="paymentmode" id="paymentmode" required>
-            <option value="DC">Debit Card</option>
-            <option value="CC">Credit Card</option>
-            <option value="UPI">UPI</option>
-            <option value="COD">Cash On Delivery</option>
-            <option value="E wallet">E-wallet</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-
-      <div class="form-group">
-        <p>Preferred Order Category:<span>*</span><br>
-        <select name="ordercat" id="ordercat" required>
-            <option value="Laptop">Laptop</option>
-            <option value="Mobile">Mobile</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Grocery">Grocery</option>
-            <option value="Others">Others</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-
-      <div class="form-group">
-        <p>Satisfaction score :<span>*</span><br>
-        <select name="satisfactionscore" id="satisfactionscore" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><div class="validation"></div>
-        </p>
-          <span class="icon-case"></span>
-      </div>
-  </div>
-    <button  type="submit " class="btn btn-lg btn-info mb-5 ml-5" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the Customer will leave the bank or not?</button>
-
-    </form>
-    <br>
-
-    <div class="result" align="center">
-		<div class="result" align="center">
-		{% if prediction==1 %}
-			<h2><p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p></h2>
-		{% elif prediction==0 %}
-			<h2><p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!&#128516;</b></p></h2>
-		{% endif %}
-        </div>
-	</div>
-  </div>
-<!-- Footer -->
-        <!-- Footer -->
-    <div class="unique-color-dark mt-4 white-text " style="background-color: #1c2331 !important;">
-      <div class="blue-gradient">
-        <div class="container">
-          <!-- Grid row-->
-          <div class="row py-3 d-flex align-items-center">
-            <!-- Grid column -->
-            <div
-              class="col-md-6 col-lg-5 text-center text-md-left"
-            >
-              <h6 class="mb-0 text-white">Developed by Solomon Wilson   <a href="https://github.com/spartasolopolo/customer-behavior-prediction-system"><i class="ml-5 fa fa-github fa-2x" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/manan-bedi-20a80a190/"><i class="ml-5 fa fa-linkedin fa-2x" aria-hidden="true"></i></a></h6>
-            </div>
-            <!-- Grid column -->
-
-
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row-->
-        </div>
-      </div>
-
-
-
-
-    <style>
+  <style>
         * {
     margin: 0;
     padding: 0;
 }
 body {
-    font-family: sans-serif;
+    font-family: Roboto;
     background-image: url(https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) !important;
     background-repeat: no-repeat !important;
     background-size: 100% 100%!important;
@@ -491,12 +205,256 @@ i {
   display:block;
 }
 
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- Navbar Starts -->
+    <section id="nav-bar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand font-weight-bold" href="#" style="color: white;">ECOMMERCE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+             <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
+             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+             </li>
+        </ul>
+    </div>
+    </nav>
+    </section>
+    <!-- Navbar Ends -->
+
+    <!-- Main Input For Receiving Query to our ML -->
+<form action="{{ url_for('predict')}}" method="post">
+    <h1>Enter the Information Below and find if a Customer will Churn out or not</h1>
+
+  <div class="contentform">
+      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
 
 
-    </style>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <div class="leftcontact">
+             <div class="form-group">
+               <p>Tenure: <span>*</span></p>
+               <span class="icon-case"></span>
+                 <input type="number" name="tenure" placeholder="tenure" required="required" >
+                 <div class="validation"></div>
+        </div>
+
+             <div class="form-group">
+             <p>Distance to the warehouse from the residence: <span>*</span></p>
+             <span class="icon-case"></span>
+          <input type="number" name="warehousetohome" placeholder="distance in km" required="required" >
+                  <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+        <p>Any complaints in the last month: <span>*</span></p>
+        <span class="icon-case"></span>
+                  <select type="radio" id="yes" name="complain" required="required" >
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  </select>
+                 <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Gender of the customer: <span>*</span></p>
+          <span class="icon-case"></span>
+			<select id="male" name="gender" required="required">
+			<option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+            <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Number of coupons used in the last month: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="couponused" placeholder="coupons used" required="required" >
+          <div class="validatiom"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Number of orders made in the last month: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="ordercount" placeholder="orders made" required="required" >
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Cashback Amount: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="cashbackamount" placeholder="cashback amount" required="required" >
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Number of days since last order placed: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="lastorder" placeholder="last order" required="required" >
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Number of devices registered with the app: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="numdevices" placeholder="registered devices" required="required" >
+          <div class="validation"></div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="rightcontact">
+
+        <div class="form-group">
+          <p>Approx. number of hours customer spends on app: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="hourspend" placeholder="hours spent" required="required" >
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Number of addresses registered with the app: <span>*</span></p>
+          <span class="icon-case"></span>
+          <input type="number" name="numaddress" placeholder="registered address" required="required" >
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Percentage increases in order from last year: <span>*</span></p>
+          <input type="number" name="orderhike" placeholder="order hike" required="required" >
+          <div class="validation"></div>
+        </div>
+
+          <div class="form-group">
+          <p>City Tier:<span>*</span></p>
+          <span class="icon-case"></span>
+          <select name="citytier" id="citytier" required>
+              <option value="1">Tier 1</option>
+              <option value="2">Tier 2</option>
+              <option value="3">Tier 3</option>
+          </select>
+              <div class="validation"></div>
+          </div>
+
+          <div class="form-group">
+          <p>Marital Status:<span>*</span></p>
+          <span class="icon-case"></span>
+          <select name="maritalstatus" id="maritalstatus" required>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+          </select>
+              <div class="validation"></div>
+          </div>
+
+
+          <div class="form-group">
+          <p>Preferred login device:<span>*</span></p>
+          <span class="icon-case"></span>
+          <select name="logindevice" id="logindevice" required>
+              <option value="Mobile">Mobile Phone</option>
+              <option value="Computer">Computer</option>
+          </select>
+              <div class="validation"></div>
+          </div>
+
+          <div class="form-group">
+          <p>Preferred Payment Mode:<span>*</span></p>
+          <span class="icon-case"></span>
+          <select name="paymentmode" id="paymentmode" required>
+              <option value="DC">Debit Card</option>
+              <option value="CC">Credit Card</option>
+              <option value="UPI">UPI</option>
+              <option value="COD">Cash On Delivery</option>
+              <option value="E wallet">E-wallet</option>
+          </select>
+              <div class="validation"></div>
+          </div>
+
+          <div class="form-group">
+          <p>Preferred Order Category:<span>*</span></p>
+          <span class="icon-case"></span>
+          <select name="ordercat" id="ordercat" required>
+              <option value="Laptop">Laptop</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Others">Others</option>
+          </select>
+              <div class="validation"></div>
+          </div>
+
+          <div class="form-group">
+              <p>Satisfaction score :<span>*</span></p>
+              <span class="icon-case"></span>
+              <select name="satisfactionscore" id="satisfactionscore" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+              </select>
+              <div class="validation"></div>
+
+
+      </div>
+</form>
+
+
+  </div>
+    <button  type="submit " class="btn btn-lg btn-info mb-5 ml-5" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the Customer will leave the bank or not?</button>
+
+
+
+    <div class="result" align="center">
+		<div class="result" align="center">
+		{% if prediction==1 %}
+			<h2><p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p></h2>
+		{% elif prediction==0 %}
+			<h2><p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!&#128516;</b></p></h2>
+		{% endif %}
+        </div>
+	</div>
+  </div>
+
+<!-- Footer -->
+        <!-- Footer -->
+    <div class="unique-color-dark mt-4 white-text " style="background-color: #1c2331 !important;">
+        <div class="blue-gradient">
+            <div class="container">
+                <!-- Grid row-->
+                <div class="row py-3 d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-5 text-center text-md-left">
+                        <h6 class="mb-0 text-white">Developed by Solomon Wilson   <a href="https://github.com/spartasolopolo/customer-behavior-prediction-system"><i class="ml-5 fa fa-github fa-2x" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/solomon-wilson-0a4295246/"><i class="ml-5 fa fa-linkedin fa-2x" aria-hidden="true"></i></a></h6>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row-->
+            </div>
+        </div>
 </body>
 
 </html>
