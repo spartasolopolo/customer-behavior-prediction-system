@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Customer Churn Prediction System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
   <style id="theme-style">
         * {
@@ -15,7 +15,7 @@
 }
 body {
     font-family: Roboto;
-    background-image: url(https://images.unsplash.com/photo-1635405054100-efa6dbf09b04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80) !important;
+    background-image: url(https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) !important;
     background-repeat: no-repeat !important;
     background-size: 100% 100%!important;
     margin-top: 0px;
@@ -216,7 +216,7 @@ i {
 
 /* Add styles for dark theme */
     body.dark-mode {
-      background-image: url(https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) !important;
+      background-image: url(https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1005&q=80) !important;
 }
 
   </style>
@@ -255,41 +255,41 @@ i {
   </div>
 
 <!-- Navbar Starts -->
-    <section id="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
     <a class="navbar-brand font-weight-bold" href="#" style="color: white;">ECOMMERCE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-             <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">Dashboard</a>
-             </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-             </li>
-        </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="visually-hidden">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
     </div>
-    </nav>
-    </section>
-    <!-- Navbar Ends -->
+  </div>
+</nav>
+<!-- Navbar Ends -->
 
     <!-- Main Input For Receiving Query to our ML -->
-<form action="{{ url_for('predict')}}" method="post">
-    <h1>Enter the Information Below and find if a Customer will Churn out or not</h1>
+<form action="{{ url_for('predict')}}" method="post" class="container my-5">
+  <h1 class="text-center">Enter the Information Below and find if a Customer will Churn out or not</h1>
 
-  <div class="contentform">
+  <div class="row">
       <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
 
 
-      <div class="leftcontact">
+      <div class="col-md-6">
              <div class="form-group">
                <p>Tenure: <span>*</span></p>
                <span class="icon-case"></span>
@@ -364,7 +364,7 @@ i {
 
       </div>
 
-      <div class="rightcontact">
+      <div class="col-md-6">
 
         <div class="form-group">
           <p>Approx. number of hours customer spends on app: <span>*</span></p>
@@ -463,7 +463,7 @@ i {
 
 
   </div>
-    <button  type="submit " class="btn btn-lg btn-info mb-5 ml-5" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the Customer will leave the bank or not?</button>
+    <button type="submit" class="btn btn-lg btn-info mb-5 mx-auto d-block" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the Customer will leave the bank or not?</button>
 
 
 
@@ -479,23 +479,16 @@ i {
   </div>
 
 <!-- Footer -->
-        <!-- Footer -->
-    <div class="unique-color-dark mt-4 white-text " style="background-color: #1c2331 !important;">
-        <div class="blue-gradient">
-            <div class="container">
-                <!-- Grid row-->
-                <div class="row py-3 d-flex align-items-center">
-                    <!-- Grid column -->
-                    <div class="col-md-6 col-lg-5 text-center text-md-left">
-                        <h6 class="mb-0 text-white">Developed by Solomon Wilson   <a href="https://github.com/spartasolopolo/customer-behavior-prediction-system"><i class="ml-5 fa fa-github fa-2x" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/solomon-wilson-0a4295246/"><i class="ml-5 fa fa-linkedin fa-2x" aria-hidden="true"></i></a></h6>
-                    </div>
-                    <!-- Grid column -->
+<div class="unique-color-dark mt-4 py-3" style="background-color: #1c2331;">
+  <div class="container text-white">
+    <div class="text-center">
+      <p class="mb-0">Developed by Solomon Wilson <a href="https://github.com/spartasolopolo/customer-behavior-prediction-system"><i class="ml-3 fa fa-github fa-2x" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/solomon-wilson-0a4295246/"><i class="ml-3 fa fa-linkedin fa-2x" aria-hidden="true"></i></a></p>
+    </div>
+  </div>
+</div>
 
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row-->
-            </div>
-        </div>
+<!-- Bootstrap scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-hhoJNf+K42TrQK4ew9x0mN7Z8LEmsmVgfaMAtHj2g4xU5TGc+4KS9sDqJ0cPz4tn" crossorigin="anonymous"></script>
 
 </body>
 
