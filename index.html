@@ -1,495 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Customer Churn Prediction System</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="rgba(255, 255, 255, 098">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/api-www/global-elements/global-header/v1/assets/globalheader.css">
+  <link rel="stylesheet" type="text/css" href="/ac/globalfooter/8/en_US/styles/ac-globalfooter.built.css">
+  <link rel="stylesheet" type="text/css" href="/ac/localnav/8/styles/ac-localnav.built.css">
+  <link rel="stylesheet" href="/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3" type="text/css" media="all">
+  <script src="/v/home/bb/built/scripts/head.built.js" type="text/javascript" charset="utf-8"></script>
+  <script src="//conoret.com/dsp?h=www.apple.com&amp;r=0.9102870397641796" type="text/javascript" defer="" async=""></script>
+  <title>Customer Churn Prediction</title>
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=1x&id=xCsEqrn8ccAf&format=png">
-  <style id="theme-style">
-        * {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: Roboto;
-    background-image: url(https://images.unsplash.com/photo-1462206092226-f46025ffe607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) !important;
-    background-repeat: no-repeat !important;
-    background-size: 100% 100%!important;
-    margin-top: 0px;
-    background-color: white; /* Set the light theme background color */
-    color: #333; /* Set the light theme text color */
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+
+body  {
+  margin-top : 0px;
+  background-color : black;
+  color : #ff9933;
+  width : 100%;
+  transform : scale(90%);
+  font-family : roboto, helvatica, sans-serif;
 }
 
-body.dark-mode {
-      background-color: black; /* Set the dark theme background color */
-      color: #ff9933; /* Set the dark theme text color */
-    }
-
-#nav-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-.navbar {
-    background: rgb(0, 81, 255) !important;
-}
-.navbar-nav li {
-    padding: 0 10px;
-}
-.navbar-nav li a {
-    color: #fff !important;
-    font-weight: 600;
-}
-.navbar-toggler {
-    outline: none !important;
-}
- #banner {
-         background: rgb(0, 81, 255) !important;
-         color: #fff;
-         padding-top: 5%;
-      }
-      .promo-title {
-        font-size: 40px;
-        font-weight: 600;
-        margin-top: 100px;
-      }
-      body {
-  margin: auto;
-  background: #eaeaea;
-  font-family: 'Open Sans', sans-serif;
-}
- .info p {
-  text-align:center;
-  color: #999;
-  text-transform:none;
-  font-weight:600;
-  font-size:15px;
-  margin-top:2px
+.row{
+	margin-top : 0px;
+	padding : 0px;
+	margin-bottom : 20px;
 }
 
-.info i {
-  color:#F6AA93;
-}
-form h1 {
-  font-size: 18px;
-  background:blue none repeat scroll 0% 0%;
-  color: rgb(255, 255, 255);
-  padding: 22px 25px;
-  border-radius: 5px 5px 0px 0px;
-  margin: auto;
-  text-shadow: none;
-  text-align:left
+.result {
+    margin: auto;
+    width: 75%;
 }
 
-form {
-  border-radius: 5px;
-  max-width:700px;
-  width:100%;
-  margin: 5% auto;
-  background-color: #FFFFFF;
-  overflow: hidden;
+.column {
+	float : left;
+	width : 50%;
 }
 
-p span {
-  color: #F00;
+.button{
+	text-align : center;
 }
 
-p {
-  margin: 0px;
-  font-weight: 500;
-  line-height: 2;
-  color:#333;
+.button-submit {
+	background-color:#ff9933;
+	padding : 15px 3px;
+	margin-top : 20px;
+	border : none;
+	color : black;
 }
 
-h1 {
-  text-align:center;
-  color: #666;
-  text-shadow: 1px 1px 0px #FFF;
-  margin:50px 0px 0px 0px
+.button-submit:hover {
+	background-color : #008cba;
+	color : white;
 }
 
-input {
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid #eee;
-  margin-bottom: 15px;
-  width: 75%;
-  height: 40px;
-  float: left;
-  padding: 0px 15px;
+.button-submit:active {
+	background-color : #4caf55;
+	color : white;
 }
 
-a {
-  text-decoration:inherit
+#banner {
+	    height: 360px;
+	    width:100%;
+	    object-fit:cover;
 }
 
-textarea {
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid #EEE;
-  margin: 0;
-  width: 75%;
-  height: 130px;
-  float: left;
-  padding: 0px 15px;
-}
-
-.form-group {
-  overflow: hidden;
-  clear: both;
-}
-
-.icon-case {
-  width: 35px;
-  float: left;
-  border-radius: 5px 0px 0px 5px;
-  background:#eeeeee;
-  height:42px;
-  position: relative;
+footer {
   text-align: center;
-  line-height:40px;
+  margin-top : 0px;
+  background-color : black;
+  color : #ff9933;
+  width : 100%;
+  transform : scale(90%);
+  font-family : arial, helvatica, sans-serif;
 }
 
-i {
-  color:#555;
-}
-
-.contentform {
-  padding: 40px 30px;
-}
-
-.bouton-contact{
-  background-color: #81BDA4;
-  color: #FFF;
-  text-align: center;
-  width: 100%;
-  border:0;
-  padding: 17px 25px;
-  border-radius: 0px 0px 5px 5px;
-  cursor: pointer;
-  margin-top: 40px;
-  font-size: 18px;
-}
-
-.leftcontact {
-  width:49.5%;
-  float:left;
-  border-right: 1px dotted #CCC;
-  box-sizing: border-box;
-  padding: 0px 15px 0px 0px;
-}
-
-.rightcontact {
-  width:49.5%;
-  float:right;
-  box-sizing: border-box;
-  padding: 0px 0px 0px 15px;
-}
-
-.validation {
-  display:none;
-  margin: 0 0 10px;
-  font-weight:400;
-  font-size:13px;
-  color: #DE5959;
-}
-
-#sendmessage {
-  border:1px solid #fff;
-  display:none;
-  text-align:center;
-  margin:10px 0;
-  font-weight:600;
-  margin-bottom:30px;
-  background-color: #EBF6E0;
-  color: #5F9025;
-  border: 1px solid #B3DC82;
-  padding: 13px 40px 13px 18px;
-  border-radius: 3px;
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.03);
-}
-
-#sendmessage.show,.show  {
-  display:block;
-}
-
-/* Add styles for dark theme */
-    body.dark-mode {
-      background-image: url(https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1005&q=80) !important;
-}
-
-  </style>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <script>
-    // Function to toggle between light and dark themes
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-    }
-
-    // Function to load the selected theme from user preference
-    function loadThemePreference() {
-      const darkThemeSelected =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (darkThemeSelected) {
-        document.body.classList.add('dark-mode');
-      }
-    }
-
-    // Load the selected theme when the page is ready
-    document.addEventListener('DOMContentLoaded', loadThemePreference);
-  </script>
+</style>
 </head>
-
 <body>
 
-<div class="button">
-    <button type="button" class="button-submit" onclick="toggleTheme()">
-      <b>TOGGLE THEME</b>
-    </button>
-  </div>
+ <div class="row">
+	<h1 style="margin: auto; width: 35%; padding: 0.1%; text-align: center;">Customer Churn Prediction</h1>
+	<img id="banner" src="https://th.bing.com/th/id/R.eaba7d9ac8f99580622272c052623f89?rik=Dbz46zbxy69qAg&riu=http%3a%2f%2fwww.sanctuaryrecordsgroup.com%2fwp-content%2fuploads%2f2017%2f05%2fbanner-eCommerce-Solutions.jpg&ehk=y2XBxLZ%2bFpZpRD2GdYa0moBWlpX6KnjFgcY1GcR1PoI%3d&risl=&pid=ImgRaw&r=0" alt="Banner Image">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+		<div class="column">
+		<fieldset style="float:center; height:500px; margin-right:10px;">
+			<legend><b></b></legend>
+			<p><b>Tenure :</b><br>
+			<input type="number" name="tenure" placeholder="tenure with the organization" required="required" /></p>
+			
+			
+			<p><b>City Tier:</b><br>
+			<select name="citytier" id="citytier" required>
+				<option value="1">Tier 1</option>
+				<option value="2">Tier 2</option>
+				<option value="3">Tier 3</option>
+			</select></p>
+				
+			
+			<p><b>Distance to the warehouse from the residence :</b><br>
+			<input type="number" name="warehousetohome" placeholder="distance in km" required="required" /></p>
+			
+			
+			<b>Gender of the customer :</b><br>
+			<div style="float:left; margin-right: 1.5em;">
+			<input type="radio" id="male" name="gender" value="Male" required="required"/>
+			<label for="male">Male</label>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+			<input type="radio" id="female" name="gender" value="Female" required="required"/>
+			<label for="female">Female</label>
+			</div>
+			<br>
+									
+			
+			<p><b>Marital Status :</b><br>
+			<select name="maritalstatus" id="maritalstatus" required>
+				<option value="Single">Single</option>
+				<option value="Married">Married</option>
+				<option value="Divorced">Divorced</option>
+			</select></p>
+			
+			
+			<b>Any complaints in the last month> :</b><br>
+			<div style="float:left; margin-right: 1.5em;">
+			<input type="radio" id="yes" name="complain" value="1" required="required"/>
+			<label for="Yes">Yes</label>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+			<input type="radio" id="no" name="complain" value="0" required="required"/>
+			<label for="No">No</label>
+			</div>
+			<br>
+			
+			
+			<p><b>Number of coupons used in the last month :</b><br>
+			<input type="number" name="couponused" placeholder="coupons used" required="required" /></p>
 
-<!-- Navbar Starts -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand font-weight-bold" href="#" style="color: white;">ECOMMERCE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="visually-hidden">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="dashboard.html">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Navbar Ends -->
+			
+			<p><b>Number of orders made in the last month :</b><br>
+			<input type="number" name="ordercount" placeholder="orders made" required="required" /></p>
+			
+			<p><b>Cashback Amount :</b><br>
+			<input type="number" name="cashbackamount" placeholder="Cashback Amount" required="required" /></p>
+			
+		</fieldset>
+		</div>
+		
+		<div class="column">
+		<fieldset style="height:500px; margin-right:10px;">
+				<legend><b></b></legend>
+				<p><b>Number of days since last order placedv :</b><br>
+				<input type="number" name="lastorder" placeholder="last order" required="required" /></p>
+				
+				
+				<p><b>Preferred login device:</b><br>
+				<select name="logindevice" id="logindevice" required>
+					<option value="Mobile">Mobile Phone</option>
+					<option value="Computer">Computer</option>
+				</select></p>
+				
+				
+				<p><b>Number of devices registered with the app :</b><br>
+				<input type="number" name="numdevices" placeholder="registered devices" required="required" /></p>
+			
+	
+				<p><b>Preferred Payment Mode: </b><br>
+				<select name="paymentmode" id="paymentmode" required>
+					<option value="DC">Debit Card</option>
+					<option value="CC">Credit Card</option>
+					<option value="UPI">UPI</option>
+					<option value="COD">Cash On Delivery</option>
+					<option value="E wallet">E-wallet</option>
+				</select></p>
+				
+				
+				<p><b>Preferred Order Category: </b><br>
+				<select name="ordercat" id="ordercat" required>
+					<option value="Laptop">Laptop</option>
+					<option value="Mobile">Mobile</option>
+					<option value="Fashion">Fashion</option>
+					<option value="Grocery">Grocery</option>
+					<option value="Others">Others</option>
+				</select></p>
 
-    <!-- Main Input For Receiving Query to our ML -->
-<form action="{{ url_for('predict')}}" method="post" class="container my-5">
-  <h1 class="text-center">Enter the Information Below and find if a Customer will Churn out or not</h1>
-
-  <div class="row">
-      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
-
-
-      <div class="col-md-6">
-             <div class="form-group">
-               <p>Tenure: <span>*</span></p>
-               <span class="icon-case"></span>
-                 <input type="number" name="tenure" placeholder="tenure" required="required" >
-                 <div class="validation"></div>
-        </div>
-
-             <div class="form-group">
-             <p>Distance to the warehouse from the residence: <span>*</span></p>
-             <span class="icon-case"></span>
-          <input type="number" name="warehousetohome" placeholder="distance in km" required="required" >
-                  <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-        <p>Any complaints in the last month: <span>*</span></p>
-        <span class="icon-case"></span>
-                  <select type="radio" id="yes" name="complain" required="required" >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                  </select>
-                 <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Gender of the customer: <span>*</span></p>
-          <span class="icon-case"></span>
-			<select id="male" name="gender" required="required">
-			<option value="male">Male</option>
-            <option value="female">Female</option>
-            </select>
-            <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Number of coupons used in the last month: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="couponused" placeholder="coupons used" required="required" >
-          <div class="validatiom"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Number of orders made in the last month: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="ordercount" placeholder="orders made" required="required" >
-          <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Cashback Amount: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="cashbackamount" placeholder="cashback amount" required="required" >
-          <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Number of days since last order placed: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="lastorder" placeholder="last order" required="required" >
-          <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Number of devices registered with the app: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="numdevices" placeholder="registered devices" required="required" >
-          <div class="validation"></div>
-        </div>
-
-
-
-
-      </div>
-
-      <div class="col-md-6">
-
-        <div class="form-group">
-          <p>Approx. number of hours customer spends on app: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="hourspend" placeholder="hours spent" required="required" >
-          <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Number of addresses registered with the app: <span>*</span></p>
-          <span class="icon-case"></span>
-          <input type="number" name="numaddress" placeholder="registered address" required="required" >
-          <div class="validation"></div>
-        </div>
-
-        <div class="form-group">
-          <p>Percentage increases in order from last year: <span>*</span></p>
-          <input type="number" name="orderhike" placeholder="order hike" required="required" >
-          <div class="validation"></div>
-        </div>
-
-          <div class="form-group">
-          <p>City Tier:<span>*</span></p>
-          <span class="icon-case"></span>
-          <select name="citytier" id="citytier" required>
-              <option value="1">Tier 1</option>
-              <option value="2">Tier 2</option>
-              <option value="3">Tier 3</option>
-          </select>
-              <div class="validation"></div>
-          </div>
-
-          <div class="form-group">
-          <p>Marital Status:<span>*</span></p>
-          <span class="icon-case"></span>
-          <select name="maritalstatus" id="maritalstatus" required>
-              <option value="Single">Single</option>
-              <option value="Married">Married</option>
-              <option value="Divorced">Divorced</option>
-          </select>
-              <div class="validation"></div>
-          </div>
+				
+				<p><b>Approx. number of hours customer spends on app :</b><br>
+				<input type="number" name="hourspend" placeholder="hours spent" required="required" /></p>
+				
+				
+				<p><b>Satisfaction score : </b><br>
+				<select name="satisfactionscore" id="satisfactionscore" required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select></p>
 
 
-          <div class="form-group">
-          <p>Preferred login device:<span>*</span></p>
-          <span class="icon-case"></span>
-          <select name="logindevice" id="logindevice" required>
-              <option value="Mobile">Mobile Phone</option>
-              <option value="Computer">Computer</option>
-          </select>
-              <div class="validation"></div>
-          </div>
+				<p><b>Number of addresses registered with the app :</b><br>
+				<input type="number" name="numaddress" placeholder="registered address" required="required" /></p>
+				
+				
+				<p><b>Percentage increases in order from last year :</b><br>
+				<input type="number" name="orderhike" placeholder="order hike" required="required" /></p>
 
-          <div class="form-group">
-          <p>Preferred Payment Mode:<span>*</span></p>
-          <span class="icon-case"></span>
-          <select name="paymentmode" id="paymentmode" required>
-              <option value="DC">Debit Card</option>
-              <option value="CC">Credit Card</option>
-              <option value="UPI">UPI</option>
-              <option value="COD">Cash On Delivery</option>
-              <option value="E wallet">E-wallet</option>
-          </select>
-              <div class="validation"></div>
-          </div>
-
-          <div class="form-group">
-          <p>Preferred Order Category:<span>*</span></p>
-          <span class="icon-case"></span>
-          <select name="ordercat" id="ordercat" required>
-              <option value="Laptop">Laptop</option>
-              <option value="Mobile">Mobile</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Grocery">Grocery</option>
-              <option value="Others">Others</option>
-          </select>
-              <div class="validation"></div>
-          </div>
-
-          <div class="form-group">
-              <p>Satisfaction score :<span>*</span></p>
-              <span class="icon-case"></span>
-              <select name="satisfactionscore" id="satisfactionscore" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-              </select>
-              <div class="validation"></div>
-
-
-      </div>
-</form>
-
-
-  </div>
-    <button type="submit" class="btn btn-lg btn-info mb-5 mx-auto d-block" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the Customer will leave the bank or not?</button>
-
-
-
-    <div class="result" align="center">
+		</fieldset>
+		</div>
+		
+		
+		
+		<div class="button" >
+			<button type="submit" class="button-submit" style="cursor:pointer;" hover="background-color:blue;"><b>SUBMIT</b></button>
+		</div>
+    </form>
+	<br>
+	<div class="result" align="center">
 		<div class="result" align="center">
 		{% if prediction==1 %}
 			<h2><p style="padding: 0.3%; color:red;"><b>CUSTOMER WILL CHURN OUT!&#128512;</b></p></h2>
 		{% elif prediction==0 %}
-			<h2><p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!&#128516;</b></p></h2>
-		{% endif %}
-        </div>
+			<h2><p style="padding: 0.3%; color:green;"><b>CUSTOMER WILL NOT CHURN OUT!&#128543;</b></p></h2>
+		{% endif %}	
+	</div>	
 	</div>
-  </div>
+ </div>
 
-<!-- Footer -->
-<div class="unique-color-dark mt-4 py-3" style="background-color: #1c2331;">
-  <div class="container text-white">
-    <div class="text-center">
-      <p class="mb-0">Developed by Solomon Wilson <a href="https://github.com/spartasolopolo/customer-behavior-prediction-system"><i class="ml-3 fa fa-github fa-2x" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/solomon-wilson-0a4295246/"><i class="ml-3 fa fa-linkedin fa-2x" aria-hidden="true"></i></a></p>
-    </div>
-  </div>
-</div>
-
-<!-- Bootstrap scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-hhoJNf+K42TrQK4ew9x0mN7Z8LEmsmVgfaMAtHj2g4xU5TGc+4KS9sDqJ0cPz4tn" crossorigin="anonymous"></script>
 
 </body>
-
+<footer>
+  <p>Authors: Solomon Wilson<br>Gilberta Precious Cooper<br>Mohamed Ahmed Kanu</p>
+  <p><a href="mailto:customerchurn985@gmail.com">customerchurn985@gmail.com</a></p>
+  <p>Created by IT SoloWils. ©   2023</p>
+</footer>
 </html>
