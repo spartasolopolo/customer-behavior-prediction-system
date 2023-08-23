@@ -30,6 +30,8 @@ The project consists of two main components:
 - CSS (Bootstrap and custom styling)
 - JavaScript (jQuery)
 - Python
+- AWS Amplify (Web link to Application https://main.d834gpbv6r2e4.amplifyapp.com/)
+- Pycharm
 
 ## Getting Started
 1. Clone this repository: `git clone https://github.com/spartasolopolo/customer-behavior-prediction-system.git`
@@ -44,4 +46,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Developed by Solomon Wilson(https://github.com/spartasolopolo/customer-behavior-prediction-system)
+Developed by Solomon Wilson (https://github.com/spartasolopolo/customer-behavior-prediction-system)
