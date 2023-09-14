@@ -68,7 +68,7 @@ body {
 }
 form h1 {
   font-size: 18px;
-  background:#1c2331 none repeat scroll 0% 0%;
+  background:#1c2331 none repeat scroll 0%;
   color: #ff9933;
   padding: 22px 25px;
   border-radius: 5px 5px 0px 0px;
@@ -148,11 +148,11 @@ i {
   color:#555;
 }
 
-.contentform {
+.content-form {
   padding: 40px 30px;
 }
 
-.bouton-contact{
+.button-contact{
   background-color: #81BDA4;
   color: #FFF;
   text-align: center;
@@ -165,7 +165,7 @@ i {
   font-size: 18px;
 }
 
-.leftcontact {
+.left-contact {
   width:49.5%;
   float:left;
   border-right: 1px dotted #CCC;
@@ -173,7 +173,7 @@ i {
   padding: 0px 15px 0px 0px;
 }
 
-.rightcontact {
+.right-contact {
   width:49.5%;
   float:right;
   box-sizing: border-box;
@@ -188,7 +188,7 @@ i {
   color: #DE5959;
 }
 
-#sendmessage {
+#send-message {
   border:1px solid #fff;
   display:none;
   text-align:center;
@@ -203,7 +203,7 @@ i {
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.03);
 }
 
-#sendmessage.show,.show  {
+#send-message.show,.show  {
   display:block;
 }
 
@@ -228,9 +228,8 @@ i {
                   <a class="nav-link" href="index.html">Prediction <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="dashboard.html" target="default">Analytics</a>
-               </li>
-                 
+                  <a class="nav-link" href="analytics.html" target="_self">Analytics</a>
+               </li>                 
           </ul>
       </div>
       </nav>
@@ -245,12 +244,12 @@ i {
     <h1>Enter the information below and find if a customer will churn out or not</h1>
 
     <!-- Left side of form -->
-    <div class="contentform">
-      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
+    <div class="content-form">
+      <div id="send-message"> Your message has been sent successfully. Thank you. </div>
 
 
       <!-- Form fields on left side -->
-      <div class="leftcontact">
+      <div class="left-contact">
             <div class="form-group">
               <p>Tenure: <span>*</span></p>
               <span class="icon-case"></span>
@@ -289,7 +288,7 @@ i {
        <div class="form-group">
        <p>Gender of the customer: <span>*</span></p>
        <span class="icon-case"></span>
-             <select id="male" name="gender" value="Male" required>
+             <select id="male" name="gender" required>
              <option value="Male">Male</option>
              <option value="Female">Female</option>
              </select>
@@ -321,7 +320,7 @@ i {
       <div class="form-group">
        <p>Any complaints in the last month: <span>*</span></p>
        <span class="icon-case"></span>
-                 <select id="yes" name="complain" value="1" required="required">
+                 <select id="yes" name="complain" required="required">
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
             </select>
@@ -333,7 +332,7 @@ i {
   </div>
 
   <!-- Right side of form -->
-  <div class="rightcontact">
+  <div class="right-contact">
   <!-- Form fields on right side -->
       <div class="form-group">
       <p>Number of days since last order placed: <span>*</span></p>
@@ -423,7 +422,7 @@ i {
   </div>
   </div>
   <!-- Submit button -->
-  <button  type="submit " class="btn btn-lg btn-info mb-5 ml-5" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); text-align: background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the customer will leave GSM Store or not?</button>
+  <button  type="submit" class="btn btn-lg btn-info mb-5 ml-5" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); text-align: background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict whether the customer will leave GSM Store or not?</button>
 
   </form>
 
@@ -431,9 +430,9 @@ i {
   <!-- Result display -->
   <div class="result mt-5" align="center" style="display: none;">
     <!-- Churn out message -->
-    <h3 class="alert alert-primary text-center" role="alert" style="padding: 0.3%; color: red;">CUSTOMER WILL CHURN OUT! 😁</h3>
+    <h3 class="alert alert-primary text-center" role="tab" style="padding: 0.3%; color: red;">CUSTOMER WILL CHURN OUT! 😟</h3>
     <!-- Not churn out message -->
-    <h3 class="alert alert-primary text-center" role="alert" style="padding: 0.3%; color: green;">CUSTOMER WILL NOT CHURN OUT! 😟</h3>
+    <h3 class="alert alert-primary text-center" role="tab" style="padding: 0.3%; color: green;">CUSTOMER WILL NOT CHURN OUT! 😁</h3>
     <!-- Explanation -->
     <br><br><marquee direction="right" behavior="scroll" style="color:#ff9933; background:#1c2331">Customer churn is when customers stop doing business with an entity. In the era of E-commerce, churn rate is an important indicator, and could signal something problematic with your business model or product features.</marquee> 
   </div>
